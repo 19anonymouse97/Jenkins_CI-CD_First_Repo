@@ -10,7 +10,7 @@ pipeline {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']],
           userRemoteConfigs: [[
-            url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git',
+            url: 'https://github.com/19anonymouse97/Jenkins_CI-CD_First_Repo',
             credentialsId: 'github'
           ]]
         ])
