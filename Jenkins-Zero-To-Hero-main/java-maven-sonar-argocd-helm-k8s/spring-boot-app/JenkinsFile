@@ -29,6 +29,12 @@ pipeline {
       //}
     //}
 
+  stage('PWD') {
+    steps {
+      sh 'echo "The current working directory is: $(pwd)"'
+    }
+}
+  
   stage('Run Docker Container') {
     steps {
         dir('C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\CI-CD-01\\Jenkins-Zero-To-Hero-main\\java-maven-sonar-argocd-helm-k8s\\spring-boot-app\\') {
