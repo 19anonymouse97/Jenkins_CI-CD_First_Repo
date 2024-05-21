@@ -30,7 +30,7 @@ pipeline {
     //}
     stage('Build and Test') {
       steps {
-        dir('C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/') {
+        dir('/mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01') {
           sh 'docker run -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
           }
 
