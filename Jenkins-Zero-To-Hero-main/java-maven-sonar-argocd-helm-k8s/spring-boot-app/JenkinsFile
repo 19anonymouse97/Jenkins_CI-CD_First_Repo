@@ -15,7 +15,7 @@ pipeline {
         //dir("C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/Jenkins-Zero-To-Hero-main/java-maven-sonar-argocd-helm-k8s/spring-boot-app") {
         sh 'pwd'
         sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/Jenkins-Zero-To-Hero-main/java-maven-sonar-argocd-helm-k8s/spring-boot-app 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
-        }
+       // }
       }
     }
 
