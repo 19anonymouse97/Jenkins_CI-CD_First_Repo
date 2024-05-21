@@ -31,7 +31,7 @@ pipeline {
 
   stage('Run Docker Container') {
     steps {
-        dir('/mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01') {
+        dir('C:\ProgramData\Jenkins\.jenkins\workspace\CI-CD-01\') {
             sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
         }
     }
