@@ -5,7 +5,7 @@ pipeline {
       //image '19anonymouse97/docker-repo-01'
       image '19anonymouse97/docker-repo-01:abhcopied'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
-      registryUrl 'https://hub.docker.com/layers/19anonymouse97/docker-repo-01'
+      registryUrl 'https://hub.docker.com/repository/docker/19anonymouse97/docker-repo-01'
       registryCredentialsId 'docker-cred'
     }
   }
