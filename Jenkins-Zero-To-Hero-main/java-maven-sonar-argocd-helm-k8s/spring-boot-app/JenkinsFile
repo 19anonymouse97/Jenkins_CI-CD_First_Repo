@@ -22,11 +22,11 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
-  //stage('Run Docker Container') {
-    //  steps {
-      //  sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w //c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ abhishekf5/maven-abhishek-docker-agent:v1 cmd.exe'
-     // }
-   // }
+  stage('Run Docker Container') {
+      steps {
+        sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w //c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
+      }
+    }
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
