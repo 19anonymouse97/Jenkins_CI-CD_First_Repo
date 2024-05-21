@@ -22,17 +22,17 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
       }
     }
-  //stage('Run Docker Container') {
-      //steps {
-        //sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w //c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
-        //docker run -w C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/
-      //}
-    //}
+  stage('Run Docker Container') {
+      steps {
+        sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w //c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
+        docker run -w C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/
+      }
+    }
     stage('Build and Test') {
       steps {
-        dir('/mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01') {
-          sh 'docker run -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
-          }
+        //dir('/mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01') {
+          //sh 'docker run -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
+          //}
 
         sh 'ls -ltr'
         // build the project and create a JAR file
