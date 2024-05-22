@@ -24,8 +24,7 @@ pipeline {
     stage('Directory') {
         steps {
             script {
-                def workspacePath = 'C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
-                sh "MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w ${workspacePath} -v ${workspacePath}:${workspacePath} -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** 19anonymouse97/docker-repo-01:abhcopied cmd.exe"
+                sh 'docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
             }
         }
     }
