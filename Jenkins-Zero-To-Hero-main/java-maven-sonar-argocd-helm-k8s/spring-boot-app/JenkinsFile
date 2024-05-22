@@ -22,13 +22,13 @@ pipeline {
 
   stages {
     stage('Directory') {
-          steps {
-              script {
-                  def workspacePath = sh(script: 'cygpath -u $WORKSPACE', returnStdout: true).trim()
-                  sh "MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w ${workspacePath} -v ${workspacePath}:${workspacePath} -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** 19anonymouse97/docker-repo-01:abhcopied cmd.exe"
-              }
-          }
-      }
+        steps {
+            script {
+                def workspacePath = 'C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
+                sh "MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w ${workspacePath} -v ${workspacePath}:${workspacePath} -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** 19anonymouse97/docker-repo-01:abhcopied cmd.exe"
+            }
+        }
+    }
     stage('Checkout') {
       steps {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']],
