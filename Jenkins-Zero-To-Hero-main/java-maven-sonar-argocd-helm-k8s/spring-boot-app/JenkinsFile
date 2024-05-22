@@ -24,6 +24,7 @@ pipeline {
     stage('Running Jenkins Inside a Container') {
       steps {
         script {
+          sh 'echo in running jenkins inside a container stage'
           sh 'docker pull jenkins/jenkins'
           sh 'docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins'
         }
@@ -32,13 +33,15 @@ pipeline {
     
     stage('Directory') {
         steps {
-            script {
+            script { 
+                sh 'echo in Directory stage'
                 sh 'docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
             }
         }
     }
     stage('Checkout') {
       steps {
+        sh 'echo in Checkout stage'
         checkout([$class: 'GitSCM', branches: [[name: '*/main']],
           userRemoteConfigs: [[
             url: 'https://github.com/19anonymouse97/Jenkins_CI-CD_First_Repo',
