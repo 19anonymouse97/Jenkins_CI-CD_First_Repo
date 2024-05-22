@@ -21,6 +21,15 @@ pipeline {
    // }
 
   stages {
+    stage('Running Jenkins Inside a Container') {
+      steps {
+        script {
+          sh 'docker pull jenkins/jenkins'
+          sh 'docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins'
+        }
+      }
+    }
+    
     stage('Directory') {
         steps {
             script {
