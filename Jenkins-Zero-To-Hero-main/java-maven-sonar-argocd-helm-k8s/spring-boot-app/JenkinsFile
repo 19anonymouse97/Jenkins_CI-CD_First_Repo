@@ -1,26 +1,27 @@
 pipeline {
-  agent {
-    docker {
-      //image 'abhishekf5/maven-abhishek-docker-agent:v1'
-      //image '19anonymouse97/docker-repo-01'
-      image '19anonymouse97/docker-repo-01:abhcopied'
-      args '--user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/' // mount Docker socket to access the host's Docker daemon
-      //registryUrl 'https://hub.docker.com/repository/docker/19anonymouse97/docker-repo-01'
-      registryCredentialsId 'docker-cred'
-    }
-  }
-  //stages {
-    //stage('Directory') {
-     //steps {
-        //dir("C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/Jenkins-Zero-To-Hero-main/java-maven-sonar-argocd-helm-k8s/spring-boot-app") {
-        //sh 'pwd'
-        //sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/Jenkins-Zero-To-Hero-main/java-maven-sonar-argocd-helm-k8s/spring-boot-app 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
-        //sh 'MSYS_NO_PATHCONV=1 docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -v /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/Jenkins-Zero-To-Hero-main/java-maven-sonar-argocd-helm-k8s/spring-boot-app:/app -w /app custom-anony:latest cmd.exe'
-       // }
-      //}
-   // }
+  agent none
 
   stages {
+    stage('Running Docker Container') {
+      agent {
+        docker {
+          image '19anonymouse97/docker-repo-01:abhcopied'
+          args '--user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/' // mount Docker socket to access the host's Docker daemon
+          //registryUrl 'https://hub.docker.com/repository/docker/19anonymouse97/docker-repo-01'
+          registryCredentialsId 'docker-cred'
+        }
+      }
+      steps {
+        script {
+          // Custom Docker command
+          def dockerCommand = 'docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
+          
+          // Run the Docker command
+          sh dockerCommand
+        }
+      }
+    }
+
     stage('Running Jenkins Inside a Container') {
       steps {
         script {
