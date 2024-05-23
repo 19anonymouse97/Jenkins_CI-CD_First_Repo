@@ -7,6 +7,7 @@ pipeline {
         docker {
           image '19anonymouse97/docker-repo-01:abhcopied'
           //args '--user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/' // mount Docker socket to access the host's Docker daemon
+          args '--user root -v /var/run/docker.sock:/var/run/docker.sock -v C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/:C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01'
           //registryUrl 'https://hub.docker.com/repository/docker/19anonymouse97/docker-repo-01'
           registryCredentialsId 'docker-cred'
         }
