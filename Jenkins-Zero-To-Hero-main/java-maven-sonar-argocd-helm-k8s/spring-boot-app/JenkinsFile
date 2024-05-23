@@ -2,15 +2,6 @@ pipeline {
   agent none
 
   stages {
-    stage('Running Jenkins Inside a Container') {
-      steps {
-        script {
-          sh 'echo in running jenkins inside a container stage'
-          sh 'docker pull jenkins/jenkins'
-          sh 'docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins'
-        }
-      }
-    }
     stage('Running Docker Container') {
       agent {
         docker {
@@ -27,6 +18,16 @@ pipeline {
           
           // Run the Docker command
           sh dockerCommand
+        }
+      }
+    }
+
+    stage('Running Jenkins Inside a Container') {
+      steps {
+        script {
+          sh 'echo in running jenkins inside a container stage'
+          sh 'docker pull jenkins/jenkins'
+          sh 'docker run -d -p 8080:8080 -p 50000:50000 jenkins/jenkins'
         }
       }
     }
