@@ -6,18 +6,36 @@ pipeline {
       agent {
         docker {
           image '19anonymouse97/docker-repo-01:abhcopied'
-          args '--user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/' // mount Docker socket to access the host's Docker daemon
+         // args '--user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/' // mount Docker socket to access the host's Docker daemon
           //registryUrl 'https://hub.docker.com/repository/docker/19anonymouse97/docker-repo-01'
           registryCredentialsId 'docker-cred'
         }
       }
       steps {
         script {
+          // Customize the docker run command
+          def dockerImage = '19anonymouse97/docker-repo-01:abhcopied'
+          def dockerCommand = 'cmd.exe'
+          def dockerOptions = [
+              '--user root',
+              '-v /var/run/docker.sock:/var/run/docker.sock',
+              '-w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/',
+              '-w C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/',
+              '-v C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/:C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/',
+              '-v C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01@tmp/:C:/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01@tmp/'
+              // Add or remove other options as needed
+          ]
+
+          // Execute docker run command
+          docker.withRun(image: dockerImage, command: dockerCommand, options: dockerOptions) { c ->
+              // Run additional steps inside the container if needed
+              // For example: sh 'echo "Hello, Docker!"'
+
           // Custom Docker command
-          def dockerCommand = 'docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
+         // def dockerCommand = 'docker run -d -t --user root -v /var/run/docker.sock:/var/run/docker.sock -w /mnt/c/ProgramData/Jenkins/.jenkins/workspace/CI-CD-01/ 19anonymouse97/docker-repo-01:abhcopied cmd.exe'
           
           // Run the Docker command
-          sh dockerCommand
+          //sh dockerCommand
         }
       }
     }
